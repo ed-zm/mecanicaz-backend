@@ -1,0 +1,8 @@
+type User {
+  id: ID! @id
+  email: string! @unique
+  hash: string!
+  oilChanges: [OilChange] @relation(name: "UserOilChanges")
+  createdAt: DateTime! @createdAt
+  updated: DateTime! @updatedAt
+}

@@ -1,0 +1,43 @@
+type EngineOilChange {
+  id: ID! @id
+  km: Int!
+  quarts: Int!
+  viscosity: EngineOilViscosity!
+  type: EngineOilType!
+  brand: OilBrand!
+  date: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime @updatedAt
+}
+
+enum EngineOilType {
+  FULL_SYNTETHIC,
+  SYNTETHIC,
+  CONVENTIONAL
+}
+
+enum EngineOilViscosity {
+  V0W20,
+  V0W30,
+  V0W40,
+  V5W20,
+  V5W30,
+  V5W40,
+  V5W50,
+  V10W20,
+  V10W30,
+  V10W40,
+  V10W50,
+  V10W60,
+  V15W20,
+  V15W30,
+  V15W40,
+  V15W50,
+  V20W20,
+  V20W30,
+  V20W40,
+  V20W50,
+  V20W60,
+  V25W50,
+  V25W60
+}

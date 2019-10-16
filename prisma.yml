@@ -1,0 +1,8 @@
+endpoint: http://${env:PRISMA_HOST:${env:PRISMA_PORT}/${env:PRISMA_SERVICE/${env:STAGE}}}
+service: ${env:PRISMA_SERVICE}
+secret: ${env:PRISMA_SECRET}
+stage: ${env:STAGE}
+datamodel:
+  - datamodel/User.graphql
+  - datamodel/OilBrand.graphql
+  - datamodel/OilChange.graphql

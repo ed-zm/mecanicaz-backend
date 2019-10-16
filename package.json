@@ -1,0 +1,18 @@
+{
+  "name": "mecanicaz-backend",
+  "version": "0.0.0",
+  "description": "An App to track your Car's Manteinance and Failures",
+  "main": "index.ts",
+  "repository": "https://github.com/ed-zm/mecanicaz-backend",
+  "author": "Eduardo Zarraga <eduardoandres8391@hotmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "deploy": "cd prisma && prisma deploy",
+    "compose": "dotenv -e .env docker-compose up -d"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "dotenv-cli": "^3.0.0"
+  }
+}
