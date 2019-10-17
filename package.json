@@ -8,11 +8,16 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "deploy": "cd prisma && prisma deploy",
+    "prisma-deploy": "prisma deploy -e .env",
     "compose": "dotenv -e .env docker-compose up -d"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
-    "dotenv-cli": "^3.0.0"
+    "dotenv-cli": "^3.0.0",
+    "graphql-cli": "^3.0.14",
+    "prisma": "^1.34.10"
+  },
+  "dependencies": {
+    "global": "^4.4.0"
   }
 }

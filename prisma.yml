@@ -1,8 +1,14 @@
-endpoint: http://${env:PRISMA_HOST:${env:PRISMA_PORT}/${env:PRISMA_SERVICE/${env:STAGE}}}
-service: ${env:PRISMA_SERVICE}
+
+endpoint: http://${env:PRISMA_HOST}:${env:PRISMA_PORT}/${env:PRISMA_SERVICE}/${env:STAGE}
 secret: ${env:PRISMA_SECRET}
-stage: ${env:STAGE}
 datamodel:
   - datamodel/User.graphql
   - datamodel/OilBrand.graphql
   - datamodel/OilChange.graphql
+
+generate:
+  - generator: typescript-client
+    output: ./generated/prisma.ts
+  - generator: graphql-schema
+    output: ./generated/prisma/prisma.graphql
+
