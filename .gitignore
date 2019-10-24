@@ -1,4 +1,6 @@
-/generated/
-/node_modules/
-yarn.error
+/generated
+/node_modules
+*/*.js
+*/*.map
+yarn-error.log
 .env
