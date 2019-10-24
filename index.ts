@@ -1,27 +1,22 @@
 import { GraphQLServer } from 'graphql-yoga'
-import { Prisma } from './generated/prisma' 
+import { fileLoader, mergeTypes } from 'merge-graphql-schemas'
+import path from 'path'
+import Mutation from './src/graphql/mutations'
+import Query from './src/graphql/queries'
 
-const prisma = new Prisma({
-  endpoint: `http://${process.env.PRISMA_HOST}:${process.env.PRISMA_PORT}/${process.env.PRISMA_SERVICE}/${process.env.STAGE}`,
-  secret: process.env.secret
+const generated = fileLoader(path.join(__dirname, 'generated'), {
+  recursive: true,
+  extensions: ['.graphql']
+})
+const customResolvers = fileLoader(path.join(__dirname, 'datamodel/custom'), {
+  recursive: true,
+  extensions: ['.graphql']
 })
 
-const queryResolvers = Object.keys(prisma.query)
-const mutationResolvers = Object.keys(prisma.mutation)
-
-const Query = {}
-const Mutation = {}
-
-queryResolvers.forEach(key => {
-  Query[key] = (_, args, ctx, info) => prisma.query[key](args, info)
-})
-
-mutationResolvers.forEach(key => {
-  Mutation[key] = (_, args, ctx, info) => prisma.mutation[key](args, info)
-})
+const typeDefs = mergeTypes([...generated, ...customResolvers ])
 
 const server = new GraphQLServer({
-  typeDefs: './generated/prisma.graphql',
+  typeDefs,
   resolvers: {
     Query,
     Mutation

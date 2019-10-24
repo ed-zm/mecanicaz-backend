@@ -1,8 +1,13 @@
 type User {
   id: ID! @id
+  firstName: String!
+  lastName: String!
+  location: String
+  phone: String
   email: String! @unique
   hash: String!
   engineOilChanges: [EngineOilChange] @relation(name: "UserOilChanges")
   createdAt: DateTime! @createdAt
-  updated: DateTime! @updatedAt
+  updatedAt: DateTime! @updatedAt
+  roles: Roles!
 }

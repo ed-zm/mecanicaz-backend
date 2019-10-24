@@ -2,9 +2,15 @@
 endpoint: http://${env:PRISMA_HOST}:${env:PRISMA_PORT}/${env:PRISMA_SERVICE}/${env:STAGE}
 secret: ${env:PRISMA_SECRET}
 datamodel:
+  # MODELS
+
   - datamodel/models/EngineOilChange.graphql
   - datamodel/models/User.graphql
+
+  # ENUMS
+
   - datamodel/enums/OilBrand.graphql
+  - datamodel/enums/Roles.graphql
 
 hooks:
   post-deploy:
